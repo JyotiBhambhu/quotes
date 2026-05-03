@@ -1,0 +1,9 @@
+.gradle
+build
+.idea
+*.iws
+*.iml
+*.ipr
+.git
+.env
+src/main/resources/application-local.properties

@@ -4,8 +4,8 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/quotes
-      SPRING_DATA_MONGODB_DATABASE: quotes
+      SPRING_MONGODB_URI: mongodb://mongo:27017/quotes
+      SPRING_MONGODB_DATABASE: quotes
       JWT_SECRET: ${JWT_SECRET}
     depends_on:
       - mongo
