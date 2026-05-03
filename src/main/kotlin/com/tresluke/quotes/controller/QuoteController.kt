@@ -2,6 +2,7 @@ package com.tresluke.quotes.controller
 
 import com.tresluke.quotes.dto.QuoteRequest
 import com.tresluke.quotes.dto.QuoteResponse
+import com.tresluke.quotes.service.DailyQuoteService
 import com.tresluke.quotes.service.QuoteService
 import jakarta.validation.Valid
 import org.springframework.data.domain.Page
@@ -11,7 +12,14 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/quotes")
-class QuoteController(private val quoteService: QuoteService) {
+class QuoteController(
+    private val quoteService: QuoteService,
+    private val dailyQuoteService: DailyQuoteService
+) {
+
+    @GetMapping("/today")
+    fun getToday(): QuoteResponse =
+        QuoteResponse.from(dailyQuoteService.getToday())
 
     @GetMapping
     fun getAll(pageable: Pageable): Page<QuoteResponse> =
